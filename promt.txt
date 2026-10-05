@@ -1,0 +1,30 @@
+Crée-moi un site web simple de **gestion de podcasts et thématiques** avec :
+
+**Technologies :** PHP POO, HTML, Tailwind CSS, JavaScript, JSON, Fetch API.
+
+**Structure :**
+
+```
+gestion_podcasts/
+├── frontend/
+│   ├── index.php
+│   ├── ajouter.php
+│   └── app.js
+└── backend/
+    ├── api.php
+    ├── Podcast.php
+    ├── Thematique.php
+    └── data.json
+```
+**Fonctionnalités :**
+
+- Page `index.php` : afficher les podcasts sous forme de cartes.
+- Page `ajouter.php` : ajouter un podcast.
+- Boutons **Modifier** et **Supprimer** pour chaque podcast.
+- Gestion des thématiques : ajouter et afficher.
+- PHP POO avec classes `Podcast` et `Thematique`.
+- `api.php` pour le CRUD avec JSON.
+- Communication Frontend/Backend avec `fetch()`.
+Je veux un design simple, propre et responsive avec Tailwind CSS, et un code **facile à comprendre pour une débutante**.
+
+Ne pas utiliser MySQL, PDO, Laravel ou framework.
