@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studio Podcasts | Administration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-800 antialiased md:flex">
+    <aside class="flex shrink-0 flex-col bg-slate-900 p-4 text-white md:sticky md:top-0 md:h-screen md:w-64 md:p-6">
+        <a href="#podcasts" class="mb-5 text-lg font-bold tracking-tight">Studio Podcasts</a>
+        <p class="mb-3 text-xs font-semibold uppercase text-slate-400">Administration</p>
+        <nav class="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible" aria-label="Navigation principale">
+            <a id="nav-podcasts" href="#podcasts" class="rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white" aria-current="page">Podcasts</a>
+            <a id="nav-themes" href="#themes" class="rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Thématiques</a>
+        </nav>
+        <p class="mt-auto hidden pt-8 text-xs text-slate-500 md:block">Gestion locale · Données JSON</p>
+    </aside>
+
+    <main class="mx-auto min-w-0 w-full max-w-7xl flex-1 space-y-6 p-4 sm:p-6 lg:p-8">
+        <header class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+                <p class="text-sm font-medium text-indigo-700">Espace de travail</p>
+                <h1 id="page-title" class="mt-1 text-2xl font-bold text-slate-950">Bibliothèque de podcasts</h1>
+            </div>
+            <span class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600">Administration</span>
+        </header>
+
+        <section id="section-podcasts" class="space-y-5">
+            <div class="flex flex-wrap items-end justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-xl font-semibold text-slate-950">Vos épisodes</h2>
+                    <p class="mt-1 text-sm text-slate-500">Consultez et gérez les podcasts enregistrés.</p>
+                </div>
+                <button id="btn-show-form-podcast" type="button" class="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">+ Nouveau podcast</button>
+            </div>
+
+            <section id="section-form-podcast" class="hidden rounded-xl border border-slate-200 bg-white p-5 sm:p-6" aria-labelledby="form-title">
+                <div class="mb-5 flex items-start justify-between gap-3">
+                    <div>
+                        <h3 id="form-title" class="text-lg font-semibold text-slate-950">Ajouter un podcast</h3>
+                        <p class="mt-1 text-sm text-slate-500">Les champs marqués d’un astérisque sont obligatoires.</p>
+                    </div>
+                </div>
+                <form id="form-podcast" class="space-y-4">
+                    <input type="hidden" id="podcast-id">
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div class="sm:col-span-2">
+                            <label for="podcast-title" class="mb-1 block text-sm font-medium">Titre *</label>
+                            <input id="podcast-title" name="title" required maxlength="120" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="podcast-description" class="mb-1 block text-sm font-medium">Description *</label>
+                            <textarea id="podcast-description" name="description" rows="4" required maxlength="1000" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"></textarea>
+                        </div>
+                        <div>
+                            <label for="podcast-audio" class="mb-1 block text-sm font-medium">Lien audio</label>
+                            <input id="podcast-audio" name="audio_url" type="url" placeholder="https://..." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                        </div>
+                        <div>
+                            <label for="podcast-theme" class="mb-1 block text-sm font-medium">Thématique *</label>
+                            <select id="podcast-theme" name="theme_id" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                                <option value="">Choisir une thématique</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-end gap-3 border-t border-slate-100 pt-4">
+                        <button id="btn-cancel-form-podcast" type="button" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Annuler</button>
+                        <button id="btn-save-podcast" type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Enregistrer</button>
+                    </div>
+                </form>
+            </section>
+
+            <div id="podcast-summary" class="text-sm text-slate-500" aria-live="polite"></div>
+            <div id="podcast-list" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <p class="flex items-center gap-3 text-sm text-slate-500"><span class="h-5 w-5 animate-spin rounded-full border-2 border-indigo-600 border-r-transparent"></span>Chargement des podcasts...</p>
+            </div>
+        </section>
+
+        <section id="section-themes" class="hidden space-y-5">
+            <div class="border-b border-slate-200 pb-4">
+                <h2 class="text-xl font-semibold text-slate-950">Thématiques</h2>
+                <p class="mt-1 text-sm text-slate-500">Organisez les épisodes avec des catégories faciles à retrouver.</p>
+            </div>
+            <section class="rounded-xl border border-slate-200 bg-white p-5 sm:p-6" aria-labelledby="theme-form-title">
+                <h3 id="theme-form-title" class="text-base font-semibold text-slate-950">Ajouter une thématique</h3>
+                <form id="form-theme" class="mt-4 flex flex-col gap-3 sm:flex-row">
+                    <label class="sr-only" for="theme-name">Nom de la thématique</label>
+                    <input id="theme-name" name="name" required maxlength="60" placeholder="Ex. Culture" class="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100">
+                    <button id="btn-save-theme" type="submit" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">Ajouter</button>
+                </form>
+            </section>
+            <div>
+                <h3 class="mb-3 text-base font-semibold text-slate-950">Thématiques disponibles</h3>
+                <ul id="theme-list" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    <li class="flex items-center gap-3 text-sm text-slate-500"><span class="h-4 w-4 animate-spin rounded-full border-2 border-indigo-600 border-r-transparent"></span>Chargement...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-container" class="fixed right-4 top-4 z-50 flex w-[min(92vw,24rem)] flex-col gap-2" aria-live="polite" aria-atomic="true"></div>
+    <script src="assets/js/app.js" defer></script>
+</body>
+</html>
