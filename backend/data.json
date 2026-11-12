@@ -1,0 +1,54 @@
+{
+    "podcasts": [
+        {
+            "id": "podcast-1",
+            "titre": "Les petites histoires du vivant",
+            "description": "Une promenade sonore pour comprendre les liens étonnants entre les espèces qui nous entourent.",
+            "url": "",
+            "thematique": "Nature",
+            "date": "2026-09-28"
+        },
+        {
+            "id": "podcast-2",
+            "titre": "Le temps d'une idée",
+            "description": "Des conversations accessibles autour des idées qui façonnent notre quotidien.",
+            "url": "",
+            "thematique": "Culture",
+            "date": "2026-09-24"
+        },
+        {
+            "id": "podcast-3",
+            "titre": "Demain, en mieux",
+            "description": "Des initiatives concrètes pour imaginer une société plus durable et plus solidaire.",
+            "url": "",
+            "thematique": "Écologie",
+            "date": "2026-09-19"
+        },
+        {
+            "id": "podcast-4",
+            "titre": "Corps en mouvement",
+            "description": "Conseils, récits et découvertes pour prendre soin de soi sans pression.",
+            "url": "",
+            "thematique": "Bien-être",
+            "date": "2026-09-12"
+        }
+    ],
+    "thematiques": [
+        {
+            "id": "theme-1",
+            "nom": "Nature"
+        },
+        {
+            "id": "theme-2",
+            "nom": "Culture"
+        },
+        {
+            "id": "theme-3",
+            "nom": "Écologie"
+        },
+        {
+            "id": "theme-4",
+            "nom": "Bien-être"
+        }
+    ]
+}

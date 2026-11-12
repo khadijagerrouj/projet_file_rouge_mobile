@@ -1,0 +1,55 @@
+classDiagram
+
+class Episode {
+    -int id
+    -string titre
+    -string description
+    -string audio
+    -int duree
+    +getId()
+    +setId()
+    +getTitre()
+    +setTitre()
+    +getDescription()
+    +setDescription()
+    +getAudio()
+    +setAudio()
+}
+
+class Auditeur {
+    -int id
+    -string nom
+    -string email
+    +getId()
+    +setId()
+    +getNom()
+    +setNom()
+    +getEmail()
+    +setEmail()
+}
+
+class Thematique {
+    -int id
+    -string nom
+    -string description
+    +getId()
+    +setId()
+    +getNom()
+    +setNom()
+    +getDescription()
+    +setDescription()
+}
+
+class Playlist {
+    -int id
+    -string nom
+    +getId()
+    +setId()
+    +getNom()
+    +setNom()
+}
+
+Thematique "1" --> "0..*" Episode : contient
+Auditeur "1" --> "0..*" Playlist : crée
+Playlist "0..*" --> "0..*" Episode : contient
+Auditeur "0..*" --> "0..*" Episode : écoute

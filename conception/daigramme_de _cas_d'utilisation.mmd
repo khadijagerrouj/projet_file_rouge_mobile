@@ -1,0 +1,35 @@
+flowchart LR
+
+    Admin((Administrateur))
+    Auditeur((Auditeur))
+
+    subgraph Systeme["Gestion des podcasts"]
+
+        A1([Ajouter un épisode])
+        A2([Afficher les épisodes])
+        A3([Modifier un épisode])
+        A4([Supprimer un épisode])
+
+        T1([Ajouter une thématique])
+        T2([Afficher les thématiques])
+        T3([Modifier une thématique])
+        T4([Supprimer une thématique])
+
+        P1([Créer une playlist])
+        P2([Écouter un épisode])
+        P3([Consulter les podcasts])
+    end
+
+    Admin --> A1
+    Admin --> A2
+    Admin --> A3
+    Admin --> A4
+
+    Admin --> T1
+    Admin --> T2
+    Admin --> T3
+    Admin --> T4
+
+    Auditeur --> P1
+    Auditeur --> P2
+    Auditeur --> P3
