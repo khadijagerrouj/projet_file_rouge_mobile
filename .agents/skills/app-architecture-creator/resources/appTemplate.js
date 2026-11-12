@@ -6,6 +6,7 @@ const tableBody = document.getElementById('table-{{entitiesLower}}-body');
 const buttonSave = document.getElementById('enregistrer-{{entityLower}}');
 const entityId = document.getElementById('{{entityLower}}-id');
 const api = 'backend/api/{{apiEndpoint}}.php';
+const formFields = '{{formPayloadMappings}}'.split(',').map((field) => field.trim()).filter(Boolean);
 const itemsById = new Map();
 
 function Loading(isLoading) {
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = id ? `${api}?id=${encodeURIComponent(id)}` : api;
         Loading(true);
         try {
-            const payload = { {{formPayloadMappings}} };
+            const payload = Object.fromEntries(formFields.map((field) => [field, form.elements[field].value]));
             const response = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
@@ -92,7 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (button.dataset.action === 'edit') {
             entityId.value = item.id;
-            {{editFormMappings}}
+            formFields.forEach((field) => {
+                const input = form.elements[field];
+                if (input) input.value = item[field] ?? '';
+            });
             sectionForm.classList.remove('hidden');
             sectionForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
             return;

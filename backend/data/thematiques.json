@@ -1,7 +1,26 @@
 [
-	{"id": 1, "name": "Culture"},
-	{"id": 2, "name": "Éducation"},
-	{"id": 3, "name": "Technologie"},
-	{"id": 4, "name": "Société"},
-	{"id": 5, "name": "Divertissement"}
+    {
+        "id": 1,
+        "name": "Culture"
+    },
+    {
+        "id": 2,
+        "name": "Éducation"
+    },
+    {
+        "id": 3,
+        "name": "Technologie"
+    },
+    {
+        "id": 4,
+        "name": "Société"
+    },
+    {
+        "id": 5,
+        "name": "Divertissement"
+    },
+    {
+        "id": 6,
+        "name": "Roman"
+    }
 ]
