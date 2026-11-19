@@ -64,15 +64,14 @@ style: |
 
 <!-- _class: title-slide -->
 
-# Rapport de projet e-learning platforme
+# Rapport de projet Gestion de Podcast
 
 <div class="brand-row">
   <img src="ofppt.png" alt="Logo OFPPT" />
   <img src="solicode.png" alt="Logo SOLICODE" />
 </div>
-
-Aymane salmoune  
-encadrant : Fouad ESSARAJ
+khaduja gerrouj
+encadrant : Fouad ES-SARRAJ
 
 ---
 

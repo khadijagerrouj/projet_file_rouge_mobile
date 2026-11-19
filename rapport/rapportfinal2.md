@@ -280,32 +280,6 @@ Le Design Thinking est donc une méthode structurée et flexible qui permet de t
 
 Le bibliothécaire est responsable des opérations de gestion. L'adhérent consulte le catalogue et peut consulter ses propres prêts lorsque cette fonction est incluse dans l'application.
 
-```mermaid
-flowchart LR
-	Bibliothecaire["Bibliothécaire"]
-	Adherent["Adhérent"]
-
-	UC1([Gérer les livres])
-	UC2([Gérer les exemplaires])
-	UC3([Gérer les genres])
-	UC4([Gérer les adhérents])
-	UC5([Rechercher dans le catalogue])
-	UC6([Enregistrer un prêt])
-	UC7([Enregistrer un retour])
-	UC8([Suivre les échéances])
-	UC9([Consulter ses prêts])
-
-	Bibliothecaire --> UC1
-	Bibliothecaire --> UC2
-	Bibliothecaire --> UC3
-	Bibliothecaire --> UC4
-	Bibliothecaire --> UC5
-	Bibliothecaire --> UC6
-	Bibliothecaire --> UC7
-	Bibliothecaire --> UC8
-	Adherent --> UC5
-	Adherent --> UC9
-```
 
 _Figure — Cas d'utilisation cible du système de gestion de bibliothèque._
 
@@ -474,50 +448,6 @@ L’architecture décrite ci-dessus correspond au prototype technique actuelleme
 
 Le modèle distingue le livre décrit dans le catalogue de ses exemplaires physiques. Cette séparation permet de suivre plusieurs copies d'un même titre et de connaître la disponibilité de chacune.
 
-```mermaid
-classDiagram
-	class Livre {
-		+int id
-		+string titre
-		+string isbn
-		+int anneePublication
-	}
-	class Auteur {
-		+int id
-		+string nom
-		+string prenom
-	}
-	class Genre {
-		+int id
-		+string nom
-	}
-	class Exemplaire {
-		+int id
-		+string codeInventaire
-		+string etat
-		+estDisponible()
-	}
-	class Adherent {
-		+int id
-		+string nom
-		+string prenom
-		+string email
-	}
-	class Emprunt {
-		+int id
-		+date dateEmprunt
-		+date dateEcheance
-		+date dateRetour
-		+string statut
-		+cloturer(dateRetour)
-	}
-
-	Livre "*" --> "*" Auteur : est écrit par
-	Genre "1" --> "0..*" Livre : classe
-	Livre "1" *-- "1..*" Exemplaire : possède
-	Adherent "1" --> "0..*" Emprunt : effectue
-	Exemplaire "1" --> "0..*" Emprunt : concerne
-```
 
 _Figure — Modèle métier cible du système de gestion de bibliothèque._
 
